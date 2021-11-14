@@ -3,6 +3,7 @@ let wave = [];
 
 function setup() {
     createCanvas($(document).width() - 15, 400);
+    slider = createSlider(1, 25, 1);
 }
 
 function draw() {
@@ -12,9 +13,9 @@ function draw() {
     let x = 0;
     let y = 0;
 
-    for (i = 0; i < 25; i++) {
+    for (i = 0; i < slider.value(); i++) {
         let n = i + 1;
-        let radius = 100 * (2 / PI) * (1 / ((-1)**i * n));
+        let radius = 100 * (2 / PI) * (1 / ((-1)**n * n));
 
         let px = x;
         let py = y;
