@@ -3,11 +3,16 @@ let wave = [];
 
 function setup() {
     createCanvas($(document).width() - 15, 400);
-    slider = createSlider(1, 25, 1);
+    slider = createSlider(1, 50, 1);
+    slider.position(20, 40);
 }
 
 function draw() {
-    background(0);
+    background(30);
+    fill(235);
+    text("Number of iterations", slider.x + 6, slider.y - 15)
+    text("1", slider.x, slider.y + 27)
+    text("50", slider.x + slider.width - 20, slider.y + 27)
     translate(175, 200);
 
     let x = 0;
