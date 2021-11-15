@@ -35,9 +35,12 @@ function draw() {
         if (sawtooth.value()) {
             n = i + 1;
             r = 100 * (2 / PI) * (1 / ((-1)**n * n));
-        } else {
+        } else if (square.value()){
             n = 2 * i + 1
             r = 50 * (4 / PI) * (1 / n);
+        } else {
+            n = null;
+            r = 200 / PI;
         }
 
         let px = x;
@@ -55,21 +58,23 @@ function draw() {
         ellipse(px, py, r * 2);
         line(px, py, x, y);
     }
-    wave.unshift(y);
 
-    translate(200, 0);
-    beginShape();
-    stroke(255, 100);
-    for (i = 0; i < wave.length; i++) {
-        vertex(i, wave[i]);
+    if (sawtooth.value() || square.value()) {
+        wave.unshift(y);
+        translate(200, 0);
+        beginShape();
+        stroke(255, 100);
+        for (i = 0; i < wave.length; i++) {
+            vertex(i, wave[i]);
+        }
+        endShape();
+
+        if (wave.length > 1000) {
+            wave.pop();
+        }
+
+        line(x - 200, y, 0, wave[0]);
     }
-    endShape();
-
-    if (wave.length > 1000) {
-        wave.pop();
-    }
-
-    line(x - 200, y, 0, wave[0]);
 
     time -= 0.03;
 }
