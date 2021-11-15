@@ -2,9 +2,19 @@ let time = 0;
 let wave = [];
 
 function setup() {
-    createCanvas($(document).width() - 15, 400);
-    slider = createSlider(1, 50, 1);
+    let width = $(document).width() - 15;
+    createCanvas(width, 400);
+
+    slider = createSlider(1, 25, 1);
     slider.position(20, 40);
+
+    square = createRadio();
+    square.option(1, "");
+    square.position(width / 2 + 30, 35);
+
+    sawtooth = createRadio();
+    sawtooth.position(width / 2 - 30, 35);
+    sawtooth.option(1, "");
 }
 
 function draw() {
@@ -12,21 +22,29 @@ function draw() {
     fill(235);
     text("Number of iterations", slider.x + 6, slider.y - 15)
     text("1", slider.x, slider.y + 27)
-    text("50", slider.x + slider.width - 20, slider.y + 27)
+    text("25", slider.x + slider.width - 20, slider.y + 27)
+    text("Square", square.x - 18, square.y + 25)
+    text("Sawtooth", sawtooth.x - 25, sawtooth.y + 25)
     translate(175, 200);
 
     let x = 0;
     let y = 0;
+    let r;
 
     for (i = 0; i < slider.value(); i++) {
-        let n = i + 1;
-        let radius = 100 * (2 / PI) * (1 / ((-1)**n * n));
+        if (sawtooth.value()) {
+            n = i + 1;
+            r = 100 * (2 / PI) * (1 / ((-1)**n * n));
+        } else {
+            n = 2 * i + 1
+            r = 50 * (4 / PI) * (1 / n);
+        }
 
         let px = x;
         let py = y;
 
-        x += radius * cos(n * time);
-        y += radius * sin(n * time);
+        x += r * cos(n * time);
+        y += r * sin(n * time);
 
         stroke(255);
         fill(255);
@@ -34,7 +52,7 @@ function draw() {
 
         stroke(255, 100);
         noFill();
-        ellipse(px, py, radius * 2);
+        ellipse(px, py, r * 2);
         line(px, py, x, y);
     }
     wave.unshift(y);
