@@ -23,6 +23,7 @@ function draw() {
     text("Number of iterations", slider.x + 6, slider.y - 15)
     text("1", slider.x, slider.y + 27)
     text("25", slider.x + slider.width - 20, slider.y + 27)
+    text(slider.value(), slider.x + slider.width + 5, slider.y + 5)
     text("Square", square.x - 18, square.y + 25)
     text("Sawtooth", sawtooth.x - 25, sawtooth.y + 25)
     translate(175, 200);
