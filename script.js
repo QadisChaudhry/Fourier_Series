@@ -20,12 +20,12 @@ function setup() {
 function draw() {
     background(30);
     fill(235);
-    text("Number of iterations", slider.x + 6, slider.y - 15)
-    text("1", slider.x, slider.y + 27)
-    text("25", slider.x + slider.width - 20, slider.y + 27)
-    text(slider.value(), slider.x + slider.width + 5, slider.y + 5)
-    text("Square", square.x - 18, square.y + 25)
-    text("Sawtooth", sawtooth.x - 25, sawtooth.y + 25)
+    text("Number of iterations", slider.x + 6, slider.y - 15);
+    text("1", slider.x, slider.y + 27);
+    text("25", slider.x + slider.width - 20, slider.y + 27);
+    text(slider.value(), slider.x + slider.width + 5, slider.y + 5);
+    text("Square", square.x - 18, square.y + 25);
+    text("Sawtooth", sawtooth.x - 25, sawtooth.y + 25);
     translate(175, 200);
 
     let x = 0;
@@ -36,8 +36,8 @@ function draw() {
         if (sawtooth.value()) {
             n = i + 1;
             r = 100 * (2 / PI) * (1 / ((-1)**n * n));
-        } else if (square.value()){
-            n = 2 * i + 1
+        } else if (square.value()) {
+            n = 2 * i + 1;
             r = 50 * (4 / PI) * (1 / n);
         } else {
             n = null;
